@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 Aniversariantes 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --jan:  #FF6B6B; --jan-s: #FFE3E3;
+  --fev:  #FF9A3C; --fev-s: #FFF0DC;
+  --mar:  #4CAF50; --mar-s: #E8F5E9;
+  --abr:  #E040FB; --abr-s: #F9E5FF;
+  --mai:  #FF4081; --mai-s: #FFE4EE;
+  --jun:  #FFD600; --jun-s: #FFFDE7;
+  --jul:  #00BCD4; --jul-s: #E0F7FA;
+  --ago:  #FF7043; --ago-s: #FBE9E7;
+  --set:  #26C6DA; --set-s: #E0F7FA;
+  --out:  #AB47BC; --out-s: #F3E5F5;
+  --nov:  #42A5F5; --nov-s: #E3F2FD;
+  --dez:  #EF5350; --dez-s: #FFEBEE;
+  --bg: #FFF9FB;
+  --text: #2D2D2D;
+  --gray: #888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── CONFETTI BG ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle, #FFD600 2px, transparent 2px),
+    radial-gradient(circle, #FF6B6B 1.5px, transparent 1.5px),
+    radial-gradient(circle, #00BCD4 2px, transparent 2px),
+    radial-gradient(circle, #E040FB 1.5px, transparent 1.5px),
+    radial-gradient(circle, #4CAF50 1px, transparent 1px);
+  background-size: 90px 90px, 70px 70px, 110px 110px, 55px 55px, 80px 80px;
+  background-position: 5px 10px, 35px 45px, 60px 20px, 15px 65px, 80px 5px;
+  opacity: 0.18;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative; z-index: 1;
+  text-align: center;
+  padding: 56px 24px 40px;
+  background: linear-gradient(160deg, #FF6B6B 0%, #FF9A3C 30%, #FFD600 55%, #4CAF50 75%, #00BCD4 90%, #E040FB 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-emoji { font-size: 52px; display: block; margin-bottom: 8px; -webkit-text-fill-color: initial; animation: bounce 1.4s ease infinite; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+.hero-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.05;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 600;
+  color: #888;
+  -webkit-text-fill-color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ── TABS NAV ── */
+.tabs-wrapper {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,249,251,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid #F0E0F0;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabs-wrapper::-webkit-scrollbar { display: none; }
+
+.tabs-nav {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  min-width: max-content;
+  padding: 10px 0 0;
+}
+
+.tab-btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px 12px;
+  border-radius: 12px 12px 0 0;
+  background: transparent;
+  color: #AAA;
+  transition: all 0.25s ease;
+  position: relative;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+.tab-btn .tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 800;
+  margin-left: 5px;
+  background: #EEE;
+  color: #999;
+  vertical-align: middle;
+}
+.tab-btn:hover { color: #555; background: #F5F0FF; }
+.tab-btn.active {
+  color: #fff;
+  padding-bottom: 14px;
+}
+.tab-btn.active .tab-count { background: rgba(255,255,255,0.3); color: #fff; }
+
+/* Month colors for active tabs */
+.tab-btn[data-month="0"].active  { background: var(--jan); }
+.tab-btn[data-month="1"].active  { background: var(--fev); }
+.tab-btn[data-month="2"].active  { background: var(--mar); }
+.tab-btn[data-month="3"].active  { background: var(--abr); }
+.tab-btn[data-month="4"].active  { background: var(--mai); }
+.tab-btn[data-month="5"].active  { background: var(--jun); color: #555 !important; }
+.tab-btn[data-month="5"].active .tab-count { color: #555; }
+.tab-btn[data-month="6"].active  { background: var(--jul); }
+.tab-btn[data-month="7"].active  { background: var(--ago); }
+.tab-btn[data-month="8"].active  { background: var(--set); }
+.tab-btn[data-month="9"].active  { background: var(--out); }
+.tab-btn[data-month="10"].active { background: var(--nov); }
+.tab-btn[data-month="11"].active { background: var(--dez); }
+
+/* ── CONTENT PANELS ── */
+.panels { position: relative; z-index: 1; }
+
+.panel { display: none; padding: 36px 24px 60px; max-width: 1000px; margin: 0 auto; }
+.panel.active { display: block; animation: fadeSlide 0.3s ease; }
+@keyframes fadeSlide { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* Panel header */
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.panel-icon {
+  width: 64px; height: 64px;
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+.panel-title-wrap { flex: 1; }
+.panel-title {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.panel-subtitle { font-size: 14px; color: #999; font-weight: 600; }
+
+/* ── CARDS GRID ── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border-radius: 20px;
+  padding: 24px 22px 22px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+  cursor: default;
+  animation: popIn 0.4s ease both;
+}
+.card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.14); }
+
+@keyframes popIn { from{opacity:0;transform:scale(0.88)} to{opacity:1;transform:scale(1)} }
+
+/* Balloon decoration */
+.card::after {
+  content: '🎈';
+  position: absolute;
+  top: 10px; right: 14px;
+  font-size: 26px;
+  opacity: 0.35;
+  animation: sway 3s ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes sway { 0%,100%{transform:rotate(-8deg)} 50%{transform:rotate(8deg)} }
+
+/* Confetti accent */
+.card::before {
+  content: '';
+  position: absolute;
+  bottom: -20px; left: -20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  opacity: 0.08;
+  background: var(--accent, #FF6B6B);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 20px;
+  color: #fff;
+  flex-shrink: 0;
+  background: var(--accent, #FF6B6B);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.avatar-info { flex: 1; min-width: 0; }
+.nickname {
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 20px;
+  color: var(--text);
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fullname {
+  font-size: 11.5px;
+  color: #AAA;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divider { height: 1px; background: rgba(0,0,0,0.06); margin-bottom: 14px; }
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+  color: #666;
+}
+.info-row:last-child { margin-bottom: 0; }
+.info-emoji { font-size: 14px; flex-shrink: 0; }
+.info-row a { color: inherit; text-decoration: none; }
+.info-row a:hover { color: var(--accent,#FF6B6B); }
+
+/* Date pill at bottom */
+.date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 14px;
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--accent, #FF6B6B);
+  color: #fff;
+  letter-spacing: 0.3px;
+}
+.date-pill.yellow { color: #553300; }
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: #CCC;
+  font-size: 18px;
+  font-weight: 700;
+}
+.empty span { display: block; font-size: 48px; margin-bottom: 12px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .panel { padding: 24px 14px 48px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .tab-btn { padding: 8px 10px 10px; font-size: 11.5px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-emoji">🎂</span>
+  <div class="hero-title">Aniversariantes 2026</div>
+  <div class="hero-sub">Celebrando cada momento especial ✨</div>
+</div>
+
+<!-- TABS NAV -->
+<div class="tabs-wrapper">
+  <div class="tabs-nav" id="tabsNav">
+    <button class="tab-btn" data-month="0"  onclick="showTab(0)">Jan <span class="tab-count">6</span></button>
+    <button class="tab-btn" data-month="1"  onclick="showTab(1)">Fev <span class="tab-count">2</span></button>
+    <button class="tab-btn" data-month="2"  onclick="showTab(2)">Mar <span class="tab-count">2</span></button>
+    <button class="tab-btn" data-month="3"  onclick="showTab(3)">Abr <span class="tab-count">2</span></button>
+    <button class="tab-btn" data-month="4"  onclick="showTab(4)">Mai <span class="tab-count">5</span></button>
+    <button class="tab-btn" data-month="5"  onclick="showTab(5)">Jun <span class="tab-count">5</span></button>
+    <button class="tab-btn" data-month="6"  onclick="showTab(6)">Jul <span class="tab-count">9</span></button>
+    <button class="tab-btn" data-month="7"  onclick="showTab(7)">Ago <span class="tab-count">2</span></button>
+    <button class="tab-btn" data-month="8"  onclick="showTab(8)">Set <span class="tab-count">3</span></button>
+    <button class="tab-btn" data-month="9"  onclick="showTab(9)">Out <span class="tab-count">4</span></button>
+    <button class="tab-btn" data-month="10" onclick="showTab(10)">Nov <span class="tab-count">5</span></button>
+    <button class="tab-btn" data-month="11" onclick="showTab(11)">Dez <span class="tab-count">5</span></button>
+  </div>
+</div>
+
+<!-- PANELS -->
+<div class="panels">
+
+  <!-- JANEIRO -->
+  <div class="panel" id="panel-0">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#FFE3E3;">☃️</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--jan)">Janeiro</div>
+        <div class="panel-subtitle">6 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#FFE3E3;--accent:var(--jan);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar">An</div>
+          <div class="avatar-info">
+            <div class="nickname">Ana</div>
+            <div class="fullname">Ana Carolina Silva Soares</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:ana.soares@deepcenter.com.br">ana.soares@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 01 de Janeiro</div>
+      </div>
+
+      <div class="card" style="background:#FFE3E3;--accent:var(--jan);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar">Da</div>
+          <div class="avatar-info">
+            <div class="nickname">Daniel</div>
+            <div class="fullname">Daniel Freire</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:daniel.freire@deepcenter.com.br">daniel.freire@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 06 de Janeiro</div>
+      </div>
+
+      <div class="card" style="background:#FFE3E3;--accent:var(--jan);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar">Ed</div>
+          <div class="avatar-info">
+            <div class="nickname">Eduardo</div>
+            <div class="fullname">Eduardo Pereira Hoths</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:eduardo.hoths@deepcenter.com.br">eduardo.hoths@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 13 de Janeiro</div>
+      </div>
+
+      <div class="card" style="background:#FFE3E3;--accent:var(--jan);--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar">DD</div>
+          <div class="avatar-info">
+            <div class="nickname">DD</div>
+            <div class="fullname">Deivisson Lima</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:deivisson.lima@deepcenter.com.br">deivisson.lima@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 19 de Janeiro</div>
+      </div>
+
+      <div class="card" style="background:#FFE3E3;--accent:var(--jan);--delay:0.4s">
+        <div class="card-top">
+          <div class="avatar">Ma</div>
+          <div class="avatar-info">
+            <div class="nickname">Marquinhos</div>
+            <div class="fullname">Marcos Gabriel Miranda Flor</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:marcos.flor@deepcenter.com.br">marcos.flor@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 20 de Janeiro</div>
+      </div>
+
+      <div class="card" style="background:#FFE3E3;--accent:var(--jan);--delay:0.5s">
+        <div class="card-top">
+          <div class="avatar">Gb</div>
+          <div class="avatar-info">
+            <div class="nickname">Gabriel</div>
+            <div class="fullname">Gabriel Carmargo</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:gabriel.camargo@aisphere.com.br">gabriel.camargo@aisphere.com.br</a></div>
+        <div class="date-pill">🎂 22 de Janeiro</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FEVEREIRO -->
+  <div class="panel" id="panel-1">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#FFF0DC;">💝</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--fev)">Fevereiro</div>
+        <div class="panel-subtitle">2 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#FFF0DC;--accent:var(--fev);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--fev)">Tz</div>
+          <div class="avatar-info">
+            <div class="nickname">Taíza</div>
+            <div class="fullname">Taiza Gomes Menezes</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:taiza.menezes@deepcenter.com.br">taiza.menezes@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 07 de Fevereiro</div>
+      </div>
+
+      <div class="card" style="background:#FFF0DC;--accent:var(--fev);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--fev)">Cl</div>
+          <div class="avatar-info">
+            <div class="nickname">Clarisse</div>
+            <div class="fullname">Elizabete Clarisse de Sousa da Silva</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:elizabete.silva@deepcenter.com.br">elizabete.silva@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 14 de Fevereiro</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MARÇO -->
+  <div class="panel" id="panel-2">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#E8F5E9;">🌿</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--mar)">Março</div>
+        <div class="panel-subtitle">2 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#E8F5E9;--accent:var(--mar);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mar)">ML</div>
+          <div class="avatar-info">
+            <div class="nickname">Marcos</div>
+            <div class="fullname">Marcos Lopes</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:marcos.lopes@deepcenter.com.br">marcos.lopes@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 06 de Março</div>
+      </div>
+
+      <div class="card" style="background:#E8F5E9;--accent:var(--mar);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mar)">Sa</div>
+          <div class="avatar-info">
+            <div class="nickname">Sarah</div>
+            <div class="fullname">Sarah Santos Ricciotti</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:sarah.ricciotti@deepcenter.com.br">sarah.ricciotti@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 14 de Março</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ABRIL -->
+  <div class="panel" id="panel-3">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#F9E5FF;">🌸</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--abr)">Abril</div>
+        <div class="panel-subtitle">2 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#F9E5FF;--accent:var(--abr);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--abr)">Ju</div>
+          <div class="avatar-info">
+            <div class="nickname">Ju</div>
+            <div class="fullname">Juliana Bravo Favacho</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:juliana.favacho@deepcenter.com.br">juliana.favacho@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 09 de Abril</div>
+      </div>
+
+      <div class="card" style="background:#F9E5FF;--accent:var(--abr);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--abr)">Ca</div>
+          <div class="avatar-info">
+            <div class="nickname">Carina</div>
+            <div class="fullname">Carina Cristina Ferreira Ballestero</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:carina.ballestero@deepcenter.com.br">carina.ballestero@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 14 de Abril</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIO -->
+  <div class="panel" id="panel-4">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#FFE4EE;">🌺</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--mai)">Maio</div>
+        <div class="panel-subtitle">5 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#FFE4EE;--accent:var(--mai);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mai)">Ro</div>
+          <div class="avatar-info">
+            <div class="nickname">Rod</div>
+            <div class="fullname">Rodrigo Oliveira Rolim</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:rodrigo.rolim@deepcenter.com.br">rodrigo.rolim@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 03 de Maio</div>
+      </div>
+
+      <div class="card" style="background:#FFE4EE;--accent:var(--mai);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mai)">Yz</div>
+          <div class="avatar-info">
+            <div class="nickname">Yzzinha</div>
+            <div class="fullname">Yzzia Nicolli Souza</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:yzzia.souza@deepcenter.com.br">yzzia.souza@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 14 de Maio</div>
+      </div>
+
+      <div class="card" style="background:#FFE4EE;--accent:var(--mai);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mai)">Ya</div>
+          <div class="avatar-info">
+            <div class="nickname">Yanca</div>
+            <div class="fullname">Yanca da Silva Pessoa</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:yanca.pessoa@deepcenter.com.br">yanca.pessoa@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 19 de Maio</div>
+      </div>
+
+      <div class="card" style="background:#FFE4EE;--accent:var(--mai);--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mai)">Ga</div>
+          <div class="avatar-info">
+            <div class="nickname">Gabriel</div>
+            <div class="fullname">Gabriel Xavier Viana</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:gabriel.viana@deepcenter.com.br">gabriel.viana@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 21 de Maio</div>
+      </div>
+
+      <div class="card" style="background:#FFE4EE;--accent:var(--mai);--delay:0.4s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--mai)">We</div>
+          <div class="avatar-info">
+            <div class="nickname">Wesley</div>
+            <div class="fullname">Wesley Mendes Pimenta</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:wesley.pimenta@deepcenter.com.br">wesley.pimenta@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 30 de Maio</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JUNHO -->
+  <div class="panel" id="panel-5">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#FFFDE7;">☀️</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:#B8960A">Junho</div>
+        <div class="panel-subtitle">5 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#FFFDE7;--accent:#C9A800;--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:#C9A800">Ka</div>
+          <div class="avatar-info">
+            <div class="nickname">Kauê</div>
+            <div class="fullname">Kauê Bueno</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:kaue.bueno@deepcenter.com.br">kaue.bueno@deepcenter.com.br</a></div>
+        <div class="date-pill" style="background:#C9A800">🎂 10 de Junho</div>
+      </div>
+
+      <div class="card" style="background:#FFFDE7;--accent:#C9A800;--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:#C9A800">Th</div>
+          <div class="avatar-info">
+            <div class="nickname">Thiago</div>
+            <div class="fullname">Thiago Gomes da Silva</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:thiago.silva@deepcenter.com.br">thiago.silva@deepcenter.com.br</a></div>
+        <div class="date-pill" style="background:#C9A800">🎂 17 de Junho</div>
+      </div>
+
+      <div class="card" style="background:#FFFDE7;--accent:#C9A800;--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:#C9A800">Vi</div>
+          <div class="avatar-info">
+            <div class="nickname">Vitinho</div>
+            <div class="fullname">Vitor Teofilo da Silva</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:vitor.teofilo@deepcenter.com.br">vitor.teofilo@deepcenter.com.br</a></div>
+        <div class="date-pill" style="background:#C9A800">🎂 19 de Junho</div>
+      </div>
+
+      <div class="card" style="background:#FFFDE7;--accent:#C9A800;--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar" style="background:#C9A800">Re</div>
+          <div class="avatar-info">
+            <div class="nickname">Renan</div>
+            <div class="fullname">Jose Renan Alcantara Lopes</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:jose.lopes@deepcenter.com.br">jose.lopes@deepcenter.com.br</a></div>
+        <div class="date-pill" style="background:#C9A800">🎂 22 de Junho</div>
+      </div>
+
+      <div class="card" style="background:#FFFDE7;--accent:#C9A800;--delay:0.4s">
+        <div class="card-top">
+          <div class="avatar" style="background:#C9A800">Lu</div>
+          <div class="avatar-info">
+            <div class="nickname">Lucas</div>
+            <div class="fullname">Lucas Teodoro</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:lucas.teodoro@deepcenter.com.br">lucas.teodoro@deepcenter.com.br</a></div>
+        <div class="date-pill" style="background:#C9A800">🎂 27 de Junho</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JULHO -->
+  <div class="panel" id="panel-6">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#E0F7FA;">🏖️</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--jul)">Julho</div>
+        <div class="panel-subtitle">9 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">CZ</div>
+          <div class="avatar-info">
+            <div class="nickname">Caio Zangarini</div>
+            <div class="fullname">Caio Zangarini</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:caio.zangarini@deepcenter.com.br">caio.zangarini@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 01 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">He</div>
+          <div class="avatar-info">
+            <div class="nickname">Hebert</div>
+            <div class="fullname">Hebert de Araújo</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:hebert.araujo@deepcenter.com.br">hebert.araujo@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 02 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">Na</div>
+          <div class="avatar-info">
+            <div class="nickname">Nando</div>
+            <div class="fullname">Fernando Ralheanco Campos</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:fernando.campos@deepcenter.com.br">fernando.campos@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 09 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">Th</div>
+          <div class="avatar-info">
+            <div class="nickname">Tha</div>
+            <div class="fullname">Thalita Pereira dos Santos</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:thalita.santos@deepcenter.com.br">thalita.santos@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 15 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.4s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">Ne</div>
+          <div class="avatar-info">
+            <div class="nickname">Nei</div>
+            <div class="fullname">Nei Agripino Delfino Neto</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:nei.neto@deepcenter.com.br">nei.neto@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 17 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.5s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">My</div>
+          <div class="avatar-info">
+            <div class="nickname">Mykhann</div>
+            <div class="fullname">Mykhann Melo</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:mykhann.melo@deepcenter.com.br">mykhann.melo@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 19 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.6s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">De</div>
+          <div class="avatar-info">
+            <div class="nickname">Desi</div>
+            <div class="fullname">Desiree Nogueira Gonçalves Manoel</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:desiree.goncalves@deepcenter.com.br">desiree.goncalves@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 21 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.7s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">Ew</div>
+          <div class="avatar-info">
+            <div class="nickname">Ewerton</div>
+            <div class="fullname">Ewerton Andrade</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:ewerton.andrade@deepcenter.com.br">ewerton.andrade@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 23 de Julho</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--jul);--delay:0.8s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--jul)">Al</div>
+          <div class="avatar-info">
+            <div class="nickname">Alice Santos</div>
+            <div class="fullname">Alice dos Santos Silva</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:alice.silva@deepcenter.com.br">alice.silva@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 29 de Julho</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AGOSTO -->
+  <div class="panel" id="panel-7">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#FBE9E7;">🌻</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--ago)">Agosto</div>
+        <div class="panel-subtitle">2 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#FBE9E7;--accent:var(--ago);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--ago)">Ca</div>
+          <div class="avatar-info">
+            <div class="nickname">Caroline</div>
+            <div class="fullname">Caroline Mendes Sá</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:caroline.sa@deepcenter.com.br">caroline.sa@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 25 de Agosto</div>
+      </div>
+
+      <div class="card" style="background:#FBE9E7;--accent:var(--ago);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--ago)">He</div>
+          <div class="avatar-info">
+            <div class="nickname">Henrique</div>
+            <div class="fullname">Henrique Mello Guazzelli</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:henrique.guazzelli@deepcenter.com.br">henrique.guazzelli@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 26 de Agosto</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SETEMBRO -->
+  <div class="panel" id="panel-8">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#E0F7FA;">🍃</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--set)">Setembro</div>
+        <div class="panel-subtitle">3 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--set);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--set)">Ka</div>
+          <div class="avatar-info">
+            <div class="nickname">Kayque</div>
+            <div class="fullname">Kayque Prado Silva</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:kayque.silva@deepcenter.com.br">kayque.silva@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 01 de Setembro</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--set);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--set)">Vi</div>
+          <div class="avatar-info">
+            <div class="nickname">Victor</div>
+            <div class="fullname">Victor Silva</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:victor.silva@deepcenter.com.br">victor.silva@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 12 de Setembro</div>
+      </div>
+
+      <div class="card" style="background:#E0F7FA;--accent:var(--set);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--set)">Ci</div>
+          <div class="avatar-info">
+            <div class="nickname">Cintia</div>
+            <div class="fullname">Cintia Aparecida Rocha</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:cintia.arocha@deepcenter.com.br">cintia.arocha@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 24 de Setembro</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OUTUBRO -->
+  <div class="panel" id="panel-9">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#F3E5F5;">🍂</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--out)">Outubro</div>
+        <div class="panel-subtitle">4 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#F3E5F5;--accent:var(--out);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--out)">Tí</div>
+          <div class="avatar-info">
+            <div class="nickname">Taís</div>
+            <div class="fullname">Tais Zamora</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:tais.zamora@deepcenter.com.br">tais.zamora@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 05 de Outubro</div>
+      </div>
+
+      <div class="card" style="background:#F3E5F5;--accent:var(--out);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--out)">Pa</div>
+          <div class="avatar-info">
+            <div class="nickname">Paulo</div>
+            <div class="fullname">Paulo Aparecido da Silva Junior</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:paulo.junior@deepcenter.com.br">paulo.junior@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 07 de Outubro</div>
+      </div>
+
+      <div class="card" style="background:#F3E5F5;--accent:var(--out);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--out)">Ra</div>
+          <div class="avatar-info">
+            <div class="nickname">Raquel</div>
+            <div class="fullname">Raquel Mayumi da Rocha Inakake</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:raquel.inakake@deepcenter.com.br">raquel.inakake@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 13 de Outubro</div>
+      </div>
+
+      <div class="card" style="background:#F3E5F5;--accent:var(--out);--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--out)">Za</div>
+          <div class="avatar-info">
+            <div class="nickname">Zancan</div>
+            <div class="fullname">Leonardo Zancan</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:leonardo.zancan@deepcenter.com.br">leonardo.zancan@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 17 de Outubro</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- NOVEMBRO -->
+  <div class="panel" id="panel-10">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#E3F2FD;">🍁</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--nov)">Novembro</div>
+        <div class="panel-subtitle">5 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#E3F2FD;--accent:var(--nov);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--nov)">Ba</div>
+          <div class="avatar-info">
+            <div class="nickname">Babi</div>
+            <div class="fullname">Barbara Carvalho</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:Barbara.Carvalho@deepcenter.com.br">Barbara.Carvalho@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 03 de Novembro</div>
+      </div>
+
+      <div class="card" style="background:#E3F2FD;--accent:var(--nov);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--nov)">Er</div>
+          <div class="avatar-info">
+            <div class="nickname">Erick</div>
+            <div class="fullname">Erick Bueno Brandão</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:erick.brandao@deepcenter.com.br">erick.brandao@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 06 de Novembro</div>
+      </div>
+
+      <div class="card" style="background:#E3F2FD;--accent:var(--nov);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--nov)">Ri</div>
+          <div class="avatar-info">
+            <div class="nickname">Ricardo</div>
+            <div class="fullname">Ricardo Xavier Morais</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:ricardo.morais@deepcenter.com.br">ricardo.morais@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 16 de Novembro</div>
+      </div>
+
+      <div class="card" style="background:#E3F2FD;--accent:var(--nov);--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--nov)">Le</div>
+          <div class="avatar-info">
+            <div class="nickname">Letícia</div>
+            <div class="fullname">Leticia Cristina Machado</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:leticia.machado@deepcenter.com.br">leticia.machado@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 26 de Novembro</div>
+      </div>
+
+      <div class="card" style="background:#E3F2FD;--accent:var(--nov);--delay:0.4s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--nov)">Is</div>
+          <div class="avatar-info">
+            <div class="nickname">Isa</div>
+            <div class="fullname">Isabelle Tavares de Oliveira</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:isabelle.oliveira@deepcenter.com.br">isabelle.oliveira@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 26 de Novembro</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DEZEMBRO -->
+  <div class="panel" id="panel-11">
+    <div class="panel-header">
+      <div class="panel-icon" style="background:#FFEBEE;">🎄</div>
+      <div class="panel-title-wrap">
+        <div class="panel-title" style="color:var(--dez)">Dezembro</div>
+        <div class="panel-subtitle">5 aniversariantes</div>
+      </div>
+    </div>
+    <div class="cards-grid">
+
+      <div class="card" style="background:#FFEBEE;--accent:var(--dez);--delay:0.0s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--dez)">Fe</div>
+          <div class="avatar-info">
+            <div class="nickname">Felipe</div>
+            <div class="fullname">Felipe Solera Bosso</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:felipe.bosso@deepcenter.com.br">felipe.bosso@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 04 de Dezembro</div>
+      </div>
+
+      <div class="card" style="background:#FFEBEE;--accent:var(--dez);--delay:0.1s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--dez)">Sa</div>
+          <div class="avatar-info">
+            <div class="nickname">Samuel</div>
+            <div class="fullname">Samuel Monteiro</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:samuel.monteiro@deepcenter.com.br">samuel.monteiro@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 10 de Dezembro</div>
+      </div>
+
+      <div class="card" style="background:#FFEBEE;--accent:var(--dez);--delay:0.2s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--dez)">Ed</div>
+          <div class="avatar-info">
+            <div class="nickname">Eduardo</div>
+            <div class="fullname">Eduardo de Jesus</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:eduardo.jesus@deepcenter.com.br">eduardo.jesus@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 17 de Dezembro</div>
+      </div>
+
+      <div class="card" style="background:#FFEBEE;--accent:var(--dez);--delay:0.3s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--dez)">Mi</div>
+          <div class="avatar-info">
+            <div class="nickname">Michel</div>
+            <div class="fullname">Michel Fontenele Aragão</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:michel.aragao@deepcenter.com.br">michel.aragao@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 30 de Dezembro</div>
+      </div>
+
+      <div class="card" style="background:#FFEBEE;--accent:var(--dez);--delay:0.4s">
+        <div class="card-top">
+          <div class="avatar" style="background:var(--dez)">Da</div>
+          <div class="avatar-info">
+            <div class="nickname">Danilo</div>
+            <div class="fullname">Danilo de Oliveira</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="info-row"><span class="info-emoji">✉️</span> <a href="mailto:danilo.oliveira@deepcenter.com.br">danilo.oliveira@deepcenter.com.br</a></div>
+        <div class="date-pill">🎂 31 de Dezembro</div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /panels -->
+
+<script>
+  // Auto-open current month (April = index 3)
+  const today = new Date();
+  const currentMonth = today.getMonth(); // 0-indexed
+
+  function showTab(idx) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + idx).classList.add('active');
+    document.querySelector('[data-month="' + idx + '"]').classList.add('active');
+
+    // Scroll tab into view
+    const btn = document.querySelector('[data-month="' + idx + '"]');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
+    // Re-trigger animations
+    document.querySelectorAll('#panel-' + idx + ' .card').forEach((c, i) => {
+      c.style.animationName = 'none';
+      c.offsetHeight;
+      c.style.animationName = '';
+      c.style.animationDelay = (i * 0.1) + 's';
+    });
+  }
+
+  showTab(currentMonth);
+</script>
+</body>
+</html>
